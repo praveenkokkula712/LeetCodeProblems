@@ -24,4 +24,28 @@ class Solution {
         }
         return result
     }
+    
+    //another possible Solution
+    func reverseOnlyLetters1(_ s: String) -> String {
+            let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            var reverse = ""
+            for char in s.reversed() {
+                if letters.contains(char) {
+                    reverse.append("\(char)")
+                }
+            }
+            var pivot = 0
+            var chars = reverse.compactMap{$0}
+            var result = ""
+            for char in s {
+                if letters.contains(char) {
+                    let letter = chars[pivot]
+                    result.append("\(letter)")
+                    pivot += 1
+                } else {
+                    result.append("\(char)")
+                }
+            }
+            return result
+        }
 }
